@@ -1009,6 +1009,7 @@ impl From<segment::types::ScoredPoint> for ScoredPoint {
             vector,
             shard_key,
             order_value,
+            score_explanation: _, // Note: gRPC doesn't support score_explanation yet
         } = point;
         Self {
             id: Some(PointId::from(id)),
@@ -1033,6 +1034,7 @@ impl TryFrom<rest::ScoredPoint> for ScoredPoint {
             vector,
             shard_key,
             order_value,
+            score_explanation: _, // no support for gRPC
         } = point;
         Ok(Self {
             id: Some(PointId::from(id)),

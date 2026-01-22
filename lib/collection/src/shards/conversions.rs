@@ -485,5 +485,6 @@ pub fn try_scored_point_from_grpc(
         vector,
         shard_key: convert_shard_key_from_grpc_opt(shard_key),
         order_value: order_value.map(TryFrom::try_from).transpose()?,
+        score_explanation: None,
     })
 }

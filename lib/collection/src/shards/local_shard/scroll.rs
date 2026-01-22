@@ -128,6 +128,7 @@ impl LocalShard {
                 vector: record.vector,
                 shard_key: record.shard_key,
                 order_value: record.order_value,
+                score_explanation: None,
             })
             .collect();
 
