@@ -2,7 +2,7 @@ use std::borrow::Cow;
 use std::collections::HashMap;
 use std::hash::{Hash, Hasher};
 
-use common::types::ScoreType;
+use common::types::{DimensionContribution, ScoreExplanation, ScoreType};
 use common::validation::validate_multi_vector;
 use ordered_float::NotNan;
 use schemars::JsonSchema;
@@ -439,6 +439,35 @@ fn image_model_example() -> String {
     "Qdrant/clip-ViT-B-32-vision".to_string()
 }
 
+/// the contribution of a single dimension to the similarity score
+#[derive(Clone, Debug, PartialEq, Serialize, JsonSchema)]
+pub struct DimensionContributionOutput {
+    pub dimension: usize,
+    pub contribution: ScoreType,
+}
+
+impl From<DimensionContribution> for DimensionContributionOutput {
+    fn from(value: DimensionContribution) -> Self {
+        Self {
+            dimension: value.dimension,
+            contribution: value.contribution,
+        }
+    }
+}
+
+#[derive(Clone, Debug, Default, Serialize, JsonSchema)]
+pub struct ScoreExplanationOutput {
+    pub top_dimensions: Vec<DimensionContributionOutput>,
+}
+
+impl From<ScoreExplanation> for ScoreExplanationOutput {
+    fn from(value: ScoreExplanation) -> Self {
+        Self {
+            top_dimensions: value.top_dimensions.into_iter().map(|d| d.into()).collect(),
+        }
+    }
+}
+
 /// Search result
 #[derive(Serialize, JsonSchema, Clone, Debug)]
 pub struct ScoredPoint {
@@ -462,6 +491,9 @@ pub struct ScoredPoint {
     /// Order-by value
     #[serde(skip_serializing_if = "Option::is_none")]
     pub order_value: Option<segment::data_types::order_by::OrderValue>,
+    /// which dimensions contributed most to the similarity score
+    #[serde(skip_serializing_if = "Option::is_none")]
+    pub score_explanation: Option<ScoreExplanationOutput>,
 }
 
 /// Point data
