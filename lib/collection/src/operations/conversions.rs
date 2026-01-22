@@ -1011,6 +1011,7 @@ impl<'a> From<CollectionCoreSearchRequest<'a>> for api::grpc::qdrant::CoreSearch
             params,
             score_threshold,
             offset,
+            with_explanation: _, // gRPC doesn't support explanation yet
         } = request;
         Self {
             collection_name: collection_id,

@@ -204,6 +204,7 @@ impl From<CoreSearchRequest> for ShardQueryRequest {
             params,
             with_vector,
             with_payload,
+            with_explanation: _, // ShardQueryRequest doesn't support explanation yet
         } = value;
 
         Self {
@@ -231,6 +232,7 @@ impl From<rest::schema::SearchRequestInternal> for ShardQueryRequest {
             params,
             with_vector,
             with_payload,
+            with_explanation: _, // ShardQueryRequest doesn't support explanation yet
         } = value;
 
         Self {

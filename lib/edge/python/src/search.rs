@@ -37,6 +37,7 @@ impl PySearchRequest {
             with_vector: with_vector.map(WithVector::from),
             with_payload: with_payload.map(WithPayloadInterface::from),
             score_threshold,
+            with_explanation: false,
         })
     }
 

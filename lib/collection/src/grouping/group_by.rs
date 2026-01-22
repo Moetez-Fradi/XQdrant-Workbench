@@ -205,6 +205,7 @@ impl From<SearchGroupsRequestInternal> for GroupRequest {
             with_payload,
             with_vector,
             score_threshold,
+            with_explanation: None,
         };
 
         GroupRequest {

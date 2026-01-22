@@ -2949,6 +2949,7 @@ impl TryFrom<SearchPoints> for rest::SearchRequestInternal {
                     .unwrap_or_default(),
             ),
             score_threshold,
+            with_explanation: Some(false),
         })
     }
 }
@@ -3011,6 +3012,7 @@ impl TryFrom<SearchPointGroups> for rest::SearchGroupsRequestInternal {
             with_payload,
             with_vector,
             score_threshold,
+            with_explanation: _,
         } = rest::SearchRequestInternal::try_from(search_points)?;
 
         Ok(Self {

@@ -396,6 +396,7 @@ fn leaf_source_from_scoring_query(
                 with_vector: Some(WithVector::from(false)),
                 with_payload: Some(WithPayloadInterface::from(false)),
                 score_threshold,
+                with_explanation: false,
             };
 
             let idx = core_searches.len();
@@ -458,6 +459,7 @@ fn leaf_source_from_scoring_query(
                 offset: 0,
                 params,
                 limit: candidates_limit,
+                with_explanation: false,
             };
 
             let idx = core_searches.len();

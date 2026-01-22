@@ -459,6 +459,7 @@ mod tests_ops {
             with_payload: Some(WithPayloadInterface::Bool(true)),
             with_vector: Some(WithVector::Bool(true)),
             score_threshold: Some(42.0),
+            with_explanation: false,
         };
 
         assert_allowed(&op, &Access::Global(GlobalAccessMode::Manage));

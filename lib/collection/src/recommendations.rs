@@ -399,6 +399,7 @@ fn recommend_by_avg_vector(
         limit,
         score_threshold,
         offset: offset.unwrap_or_default(),
+        with_explanation: false,
     })
 }
 
@@ -464,6 +465,7 @@ fn recommend_by_custom_score(
         with_payload,
         with_vector,
         score_threshold,
+        with_explanation: false,
     }
 }
 

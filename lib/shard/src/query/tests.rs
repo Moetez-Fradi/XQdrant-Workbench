@@ -84,6 +84,7 @@ fn test_try_from_double_rescore() {
             with_payload: Some(WithPayloadInterface::Bool(false)),
             with_vector: Some(WithVector::Bool(false)),
             score_threshold: None,
+            with_explanation: false,
         }]
     );
 
@@ -157,6 +158,7 @@ fn test_try_from_no_prefetch() {
             with_vector: Some(WithVector::Bool(false)),
             with_payload: Some(WithPayloadInterface::Bool(false)),
             score_threshold: Some(0.5),
+            with_explanation: false,
         }]
     );
 
@@ -243,6 +245,7 @@ fn test_try_from_hybrid_query() {
                 with_payload: Some(WithPayloadInterface::Bool(false)),
                 with_vector: Some(WithVector::Bool(false)),
                 score_threshold: None,
+                with_explanation: false,
             },
             CoreSearchRequest {
                 query: QueryEnum::Nearest(NamedQuery::new(
@@ -256,6 +259,7 @@ fn test_try_from_hybrid_query() {
                 with_payload: Some(WithPayloadInterface::Bool(false)),
                 with_vector: Some(WithVector::Bool(false)),
                 score_threshold: None,
+                with_explanation: false,
             }
         ]
     );
@@ -372,7 +376,8 @@ fn test_base_params_mapping_in_try_from() {
             offset: 0,
             with_payload: Some(WithPayloadInterface::Bool(false)),
             with_vector: Some(WithVector::Bool(false)),
-            score_threshold: Some(0.1)
+            score_threshold: Some(0.1),
+            with_explanation: false,
         }]
     )
 }

@@ -238,6 +238,7 @@ impl Shard {
                     with_payload: None,
                     with_vector: None,
                     score_threshold: score_threshold.map(OrderedFloat::into_inner),
+                    with_explanation: false,
                 };
 
                 self.search(search_request)

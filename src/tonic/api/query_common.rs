@@ -104,6 +104,7 @@ pub async fn search(
                 .unwrap_or_default(),
         ),
         score_threshold,
+        with_explanation: false, // no gRPC
     };
 
     let toc = toc_provider
